@@ -1,0 +1,141 @@
+Table user {
+    id_user INT [pk, increment]
+    name VARCHAR
+    email VARCHAR [unique]
+    token VARCHAR
+    confirmed BOOLEAN
+    password VARCHAR
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+    rol VARCHAR
+}
+
+Table city {
+    id_city INT [pk, increment]
+    name VARCHAR
+}
+
+Table points {
+    id_user INT [pk, ref: > user.id_user]
+    number_points INT
+}
+
+Table size {
+    id_size INT [pk, increment]
+    size VARCHAR
+}
+
+Table category {
+    id_category INT [pk, increment]
+    name VARCHAR
+}
+
+Table color {
+    id_color INT [pk, increment]
+    color VARCHAR
+}
+
+Table product {
+    id_product INT [pk, increment]
+    name VARCHAR
+    price DECIMAL
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+    size INT [ref: > size.id_size]
+    color INT [ref: > color.id_color]
+    id_category INT [ref: > category.id_category]
+}
+
+Table orders {
+    id_order INT [pk, increment]
+    points INT
+    status VARCHAR
+    date_order DATE
+    direction VARCHAR
+    id_user INT [ref: > user.id_user]
+    id_city INT [ref: > city.id_city]
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
+
+Table order_item {
+    id_order_item INT [pk, increment]
+    quantity INT
+    price DECIMAL
+    id_order INT [ref: > orders.id_order]
+    id_product INT [ref: > product.id_product]
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
+
+/* Insertando datos iniciales */
+
+Table color {
+    id_color INT [pk, increment]
+    color VARCHAR
+}
+
+Table size {
+    id_size INT [pk, increment]
+    size VARCHAR
+}
+
+Table category {
+    id_category INT [pk, increment]
+    name VARCHAR
+}
+
+Table city {
+    id_city INT [pk, increment]
+    name VARCHAR
+}
+
+Table user {
+    id_user INT [pk, increment]
+    name VARCHAR
+    email VARCHAR
+    token VARCHAR
+    confirmed BOOLEAN
+    password VARCHAR
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+    rol VARCHAR
+}
+
+Table points {
+    id_user INT [pk, ref: > user.id_user]
+    number_points INT
+}
+
+Table product {
+    id_product INT [pk, increment]
+    name VARCHAR
+    price DECIMAL
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+    size INT [ref: > size.id_size]
+    color INT [ref: > color.id_color]
+    id_category INT [ref: > category.id_category]
+}
+
+Table orders {
+    id_order INT [pk, increment]
+    points INT
+    status VARCHAR
+    date_order DATE
+    direction VARCHAR
+    id_user INT [ref: > user.id_user]
+    id_city INT [ref: > city.id_city]
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
+
+Table order_item {
+    id_order_item INT [pk, increment]
+    quantity INT
+    price DECIMAL
+    id_order INT [ref: > orders.id_order]
+    id_product INT [ref: > product.id_product]
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+}
